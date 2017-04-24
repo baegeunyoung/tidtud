@@ -29,22 +29,6 @@
     메뉴조회
   </button>
   <div *ngIf="major != 0">{{ store }}</div>
-<!--
-  <ion-card id="menu" #innerHTML > 
-    <div [innerHTML] = "menu" >    </div> 
-      <img [src] = "img"  />  
-  </ion-card>
--->
-<!--
-<template ngFor let-menuFile [ngForOf]="menu.menuFile">            
-        <img src = "http://192.168.0.201:9090/bit902web/upload/{{menuFile.filePath}}/{{menuFile.systemName}}"/>          
-</template>
--->
-     <!--
-      <input [(ngModel)]="abc">
-   {{ abc * menu.price }}
-   -->
-
 <template ngFor let-menu [ngForOf]="menu" let-i=index>  
   <ion-list>
   <ion-item>
@@ -57,21 +41,19 @@
        </template>
     </ion-thumbnail>
     
-    <h2><p id="a{{i}}">{{menu.name}}</p></h2>
-    <p id="price{{i}}">{{menu.price}}원</p>   
+    <h2><p>{{menu.name}}</p></h2>
+    <p>{{menu.price}}원</p>   
     
     <p>수량:<button ion-button color="light" icon-only (click)="orderPlus()">
         <ion-icon name='arrow-up'></ion-icon>
     </button>
-     <input type="text" style="width:35px" id="{{i}}" [(ngModel)] = "a" />
+     <input type="text" style="width:35px" [(ngModel)] = "a" />
     <button  ion-button color="light" icon-only (click)="orderMinus()">
       <ion-icon name='arrow-down'></ion-icon>
     </button></p>
     
   <p>{{menu.content}}</p>
     금액: {{ a * menu.price }}원
-    asdasdasdasd::::{{i}}
-  
      </ion-item> 
     </ion-list>
  

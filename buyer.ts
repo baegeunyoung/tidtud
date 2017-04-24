@@ -73,23 +73,6 @@ export class BuyerPage {
           this.menu = data.menu;
           this.menuFile = data.menuFile;
 
-          
-  
-        /*
-          for(let i = 0; i < data.menu.length; i++) {
-              for(let j = 0; j<data.menuFile.length; j++){
-
-              if(data.menu[i].menuNo == data.menuFile[j].menuNo){
-                console.log("파일번호:" + data.menuFile[j].menuNo); 
-             //   this.menu =  "<img [src] = 'http://192.168.0.201:9090/bit902web/upload'" + data.menuFile[j].filePath+ "/" +data.menuFile[j].systemName +"/>";        
-                this.img =  "http://192.168.0.201:9090/bit902web/upload" + data.menuFile[j].filePath+ "/" +data.menuFile[j].systemName ;
-               //  this.img =  "assets/5.jpg";
-              }
-            }      
-            	this.menu += "<div>" + data.menu[i].menuNo + " "+ data.menu[i].name+ "  : " + data.menu[i].price + "원 " + data.menu[i].content +"<button>버튼</button></div>";      
-					}
-          
-          */
         },error => {
           console.log("error");
         }); 
