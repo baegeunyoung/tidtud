@@ -1,0 +1,114 @@
+<!--
+  Generated template for the Login page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--<meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src	'self' 'unsafe-inline' *; img-src 'self' data: *">-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>로그인</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <p>로그인페이지</p>
+  <button ion-button (click)="buyerList()">
+    사용자조회
+  </button>
+  <ion-card id="login" #innerHTML>
+    <div [innerHTML] = "html"></div>
+  </ion-card>
+  <button ion-button (click)="menuList()">
+    메뉴조회
+  </button>
+  <div *ngIf="major != 0">{{ store }}</div>
+<!--
+  <ion-card id="menu" #innerHTML > 
+    <div [innerHTML] = "menu" >    </div> 
+      <img [src] = "img"  />  
+  </ion-card>
+-->
+<!--
+<template ngFor let-menuFile [ngForOf]="menu.menuFile">            
+        <img src = "http://192.168.0.201:9090/bit902web/upload/{{menuFile.filePath}}/{{menuFile.systemName}}"/>          
+</template>
+-->
+     <!--
+      <input [(ngModel)]="abc">
+   {{ abc * menu.price }}
+   -->
+
+<template ngFor let-menu [ngForOf]="menu" let-i=index>  
+  <ion-list>
+  <ion-item>
+  
+     <ion-thumbnail item-left>     
+       <template ngFor let-menuFile [ngForOf]="menuFile">       
+         <p *ngIf = "menu.menuNo == menuFile.menuNo">
+             <img src = "http://192.168.0.201:9090/bit902web/upload/{{menuFile.filePath}}/{{menuFile.systemName}}"/>
+         </p>   
+       </template>
+    </ion-thumbnail>
+    
+    <h2><p id="a{{i}}">{{menu.name}}</p></h2>
+    <p id="price{{i}}">{{menu.price}}원</p>   
+    
+    <p>수량:<button ion-button color="light" icon-only (click)="orderPlus()">
+        <ion-icon name='arrow-up'></ion-icon>
+    </button>
+     <input type="text" style="width:35px" id="{{i}}" [(ngModel)] = "a" />
+    <button  ion-button color="light" icon-only (click)="orderMinus()">
+      <ion-icon name='arrow-down'></ion-icon>
+    </button></p>
+    
+  <p>{{menu.content}}</p>
+    금액: {{ a * menu.price }}원
+    asdasdasdasd::::{{i}}
+  
+     </ion-item> 
+    </ion-list>
+ 
+</template>
+<br>
+   최종 주문금액: 
+
+<ion-icon name="heart"></ion-icon>   
+
+<br>
+<template>
+
+<button (click)="cash()">cash</button>
+</template>
+<!--
+<table>
+  <th>사진</th>
+  <th>메뉴명</th>
+  <th>가격</th>
+  <th>수량</th>
+  <th>수량에따른가격</th>
+  <tr>
+    <td>9</td>
+    <td>9</td>
+    <td>9</td>
+    <td>9</td>
+    <td>9</td>
+  </tr>
+</table>
+-->
+<!--
+<template ngFor let-menu [ngForOf]="menus">
+ <div *ngIf="menu.menuFile">
+   <img [src]="getFileUrl(menu.menuFile)" />
+ </div>
+ <p>{{menu.name}} {{menu.price}} {{menu.content}} <button>버튼</button></p>
+</template>
+-->
+</ion-content>
+
