@@ -11,12 +11,10 @@
     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>로그인</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>
   <p>로그인페이지</p>
   <button ion-button (click)="buyerList()">
@@ -28,11 +26,13 @@
   <button ion-button (click)="menuList()">
     메뉴조회
   </button>
+ 
   <div *ngIf="major != 0">{{ store }}</div>
+
 <template ngFor let-menu [ngForOf]="menu" let-i=index>  
   <ion-list>
   <ion-item>
-  
+   
      <ion-thumbnail item-left>     
        <template ngFor let-menuFile [ngForOf]="menuFile">       
          <p *ngIf = "menu.menuNo == menuFile.menuNo">
@@ -41,56 +41,34 @@
        </template>
     </ion-thumbnail>
     
-    <h2><p>{{menu.name}}</p></h2>
-    <p>{{menu.price}}원</p>   
-    
-    <p>수량:<button ion-button color="light" icon-only (click)="orderPlus()">
+    <input type="hidden" [(ngModel)]="menu.name" name="name" readonly><h2>{{menu.name}}</h2>
+    <input type="hidden" [(ngModel)]="menu.price" name="price" readonly><p>{{menu.price}}</p>
+    <input type="hidden" [(ngModel)]="menu.stName" name="stName" readonly><p>{{menu.stName}}</p>
+
+    <p>수량을입력하세요:<button ion-button color="light" icon-only (click)="orderPlus(menu)">
         <ion-icon name='arrow-up'></ion-icon>
-    </button>
-     <input type="text" style="width:35px" [(ngModel)] = "a" />
-    <button  ion-button color="light" icon-only (click)="orderMinus()">
+    </button>  
+    <input type="text" style="width:35px" [(ngModel)]="menu.quantity" />
+    <button  ion-button color="light" icon-only (click)="orderMinus(menu)">
       <ion-icon name='arrow-down'></ion-icon>
-    </button></p>
-    
-  <p>{{menu.content}}</p>
-    금액: {{ a * menu.price }}원
+    </button></p> 
+      <input type="hidden" [(ngModel)]="menu.content" name="content" readonly><p>{{menu.content}}</p><br>
+      <input type="text" value="{{ menu.quantity * menu.price }}" name="d{{i}}" id="d{{i}}">금액: {{ menu.quantity * menu.price }}원 
      </ion-item> 
     </ion-list>
- 
-</template>
-<br>
-   최종 주문금액: 
-
-<ion-icon name="heart"></ion-icon>   
+    </template>
 
 <br>
-<template>
+ <div *ngIf = "menu!=undefined">
+    <textarea [(ngModel)]="orderContent" name="orderConten"> 
+  </textarea>
+  <br>
+    최종 주문금액: 
+<button (click)="order()">결제하기</button>
+<ion-icon name="heart"></ion-icon>  
+</div>
+<br>
 
-<button (click)="cash()">cash</button>
-</template>
-<!--
-<table>
-  <th>사진</th>
-  <th>메뉴명</th>
-  <th>가격</th>
-  <th>수량</th>
-  <th>수량에따른가격</th>
-  <tr>
-    <td>9</td>
-    <td>9</td>
-    <td>9</td>
-    <td>9</td>
-    <td>9</td>
-  </tr>
-</table>
--->
-<!--
-<template ngFor let-menu [ngForOf]="menus">
- <div *ngIf="menu.menuFile">
-   <img [src]="getFileUrl(menu.menuFile)" />
- </div>
- <p>{{menu.name}} {{menu.price}} {{menu.content}} <button>버튼</button></p>
-</template>
--->
+
 </ion-content>
 
